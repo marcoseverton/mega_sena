@@ -96,15 +96,28 @@ button {
 /* RESULTADO (OCULTO ATÉ GERAR) */
 #resultado {
     display: none;
-    max-width: 420px;
+
+    max-width: 100%;
     margin: 20px auto;
+
     background: #000;
     color: #0f0;
+
     padding: 12px;
     border-radius: 6px;
+
     font-size: 16px;
     font-family: monospace;
+    line-height: 1.5;
+
+    /* 👇 AQUI ESTÁ A CHAVE */
+    max-height: 50vh;        /* no máximo metade da tela */
+    overflow-y: auto;        /* scroll vertical automático */
+    overflow-x: auto;        /* scroll horizontal se precisar */
+
+    white-space: pre;        /* preserva alinhamento */
 }
+
 
 /* INFO */
 .info {
@@ -150,3 +163,4 @@ button {
         padding: 12px;
     }
 }
+
