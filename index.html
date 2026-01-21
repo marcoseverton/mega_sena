@@ -12,28 +12,44 @@
 </head>
 <body>
 
-<h1>🎯 Gerador Mega-Sena</h1>
+<header>
+    <h1>🎯 Gerador Mega-Sena</h1>
+    <button id="btnTema" title="Alternar tema">🌙</button>
+</header>
 
 <div class="card">
-    <label>Quantidade de jogos</label>
+    <label title="Quantidade de apostas que serão geradas">
+        Quantidade de jogos
+    </label>
     <input type="number" id="qtdJogos" value="10" min="1">
 
-    <label>Números por jogo (6–20)</label>
+    <label title="Quantidade de dezenas em cada jogo (entre 6 e 20)">
+        Números por jogo (6–20)
+    </label>
     <input type="number" id="qtdNumeros" value="6" min="6" max="20">
 
-    <label>Soma mínima</label>
+    <label title="Valor mínimo permitido para a soma das dezenas do jogo">
+        Soma mínima
+    </label>
     <input type="number" id="sumMin" value="120">
 
-    <label>Soma máxima</label>
+    <label title="Valor máximo permitido para a soma das dezenas do jogo">
+        Soma máxima
+    </label>
     <input type="number" id="sumMax" value="210">
 
-    <label>Pares alvo</label>
+    <label title="Quantidade ideal de números pares no jogo">
+        Pares alvo
+    </label>
     <input type="number" id="pares" value="3">
 
-    <label>Tolerância</label>
+    <label title="Margem de variação permitida para a quantidade de pares">
+        Tolerância
+    </label>
     <input type="number" id="tolerancia" value="1">
 
-    <label>
+    <label class="check"
+           title="Se marcado, mostra todas as combinações possíveis de 6 números a partir do jogo gerado">
         <input type="checkbox" id="desdobramento">
         Mostrar desdobramento lógico
     </label>
