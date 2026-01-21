@@ -26,25 +26,25 @@
 
     <label>
         <span class="label-text">Números por jogo (6–20)</span>
-        <span class="info" data-tooltip="Quantidade de dezenas em cada jogo. A aposta simples possui 6 números."></span>
+        <span class="info" data-tooltip="Quantidade de dezenas por jogo. A aposta simples tem 6 números."></span>
     </label>
     <input type="number" id="qtdNumeros" value="6" min="6" max="20">
 
     <label>
         <span class="label-text">Soma mínima</span>
-        <span class="info" data-tooltip="Valor mínimo permitido para a soma de todas as dezenas do jogo."></span>
+        <span class="info" data-tooltip="Valor mínimo permitido para a soma das dezenas do jogo."></span>
     </label>
     <input type="number" id="sumMin" value="120">
 
     <label>
         <span class="label-text">Soma máxima</span>
-        <span class="info" data-tooltip="Valor máximo permitido para a soma de todas as dezenas do jogo."></span>
+        <span class="info" data-tooltip="Valor máximo permitido para a soma das dezenas do jogo."></span>
     </label>
     <input type="number" id="sumMax" value="210">
 
     <label>
         <span class="label-text">Pares alvo</span>
-        <span class="info" data-tooltip="Quantidade ideal de números pares no jogo. Exemplo: 3 pares e 3 ímpares."></span>
+        <span class="info" data-tooltip="Quantidade ideal de números pares no jogo."></span>
     </label>
     <input type="number" id="pares" value="3">
 
@@ -57,7 +57,7 @@
     <label class="check">
         <input type="checkbox" id="desdobramento">
         <span class="label-text">Mostrar desdobramento lógico</span>
-        <span class="info" data-tooltip="Mostra todas as combinações possíveis de 6 dezenas a partir do jogo gerado."></span>
+        <span class="info" data-tooltip="Mostra as combinações possíveis de 6 dezenas quando o jogo tem mais números."></span>
     </label>
 
     <button id="btnGerar">Gerar jogos</button>
@@ -68,6 +68,5 @@
 <pre id="resultado"></pre>
 
 <script src="app.js"></script>
-
 </body>
 </html>
