@@ -39,13 +39,8 @@ header {
     max-width: 420px;
     margin: auto;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 22px;
+    align-items: center;
 }
 
 /* CARD */
@@ -61,11 +56,9 @@ header h1 {
 .card label {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 8px;
-    width: 100%;
-    font-weight: 600;
     margin-top: 14px;
+    font-weight: 600;
 }
 
 .label-text {
@@ -84,7 +77,7 @@ header h1 {
 
 /* CHECKBOX */
 .check {
-    gap: 8px;
+    align-items: center;
 }
 
 /* BOTÕES */
@@ -100,21 +93,22 @@ button {
     cursor: pointer;
 }
 
-/* RESULTADO */
-pre {
+/* RESULTADO (OCULTO ATÉ GERAR) */
+#resultado {
+    display: none;
     max-width: 420px;
     margin: 20px auto;
     background: #000;
     color: #0f0;
     padding: 12px;
     border-radius: 6px;
-    font-size: 25px;
+    font-size: 16px;
     font-family: monospace;
 }
 
-/* INFO (ÍCONE DE AJUDA) */
+/* INFO */
 .info {
-    flex: 0 0 auto;             /* 🔥 impede esticar */
+    flex: 0 0 auto;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -133,8 +127,7 @@ pre {
 }
 
 /* TOOLTIP */
-.info:hover::before,
-.info:active::before {
+.info:hover::before {
     content: attr(data-tooltip);
     position: absolute;
     bottom: 130%;
@@ -149,18 +142,11 @@ pre {
     white-space: normal;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     z-index: 9999;
-    pointer-events: none;
 }
 
 /* RESPONSIVO */
 @media (max-width: 480px) {
     body {
         padding: 12px;
-    }
-
-    header,
-    .card,
-    pre {
-        max-width: 100%;
     }
 }
