@@ -16,36 +16,36 @@ document.addEventListener("DOMContentLoaded", () => {
         const tol      = Number(document.getElementById("tolerancia").value);
         const desd     = document.getElementById("desdobramento").checked;
 
-        let output = "";
+        let texto = "";
 
         for (let j = 1; j <= qtdJogos; j++) {
-            let numeros;
+            let nums;
             do {
-                numeros = gerarNumeros(qtdNums);
-            } while (!passaFiltros(numeros, sumMin, sumMax, pares, tol));
+                nums = gerarNumeros(qtdNums);
+            } while (!passaFiltros(nums, sumMin, sumMax, pares, tol));
 
-            output += `JOGO ${j}\n`;
-            output += numeros.map(n => n.toString().padStart(2, "0")).join(" ") + "\n";
+            texto += `JOGO ${j}\n`;
+            texto += nums.map(n => n.toString().padStart(2, "0")).join(" ") + "\n";
 
             if (desd && qtdNums > 6) {
-                output += "Desdobramento:\n";
-                combinacoes(numeros, 6).forEach((c, i) => {
-                    output += `  ${i + 1}: ${c.map(n => n.toString().padStart(2, "0")).join(" ")}\n`;
+                texto += "Desdobramento:\n";
+                gerarCombinacoes(nums, 6).forEach((c, i) => {
+                    texto += `  ${i + 1}: ${c.map(n => n.toString().padStart(2,"0")).join(" ")}\n`;
                 });
             }
 
-            output += "\n";
+            texto += "\n";
         }
 
-        resultado.textContent = output;
+        resultado.textContent = texto;
     }
 
     function gerarNumeros(qtd) {
-        const nums = new Set();
-        while (nums.size < qtd) {
-            nums.add(Math.floor(Math.random() * 60) + 1);
+        const set = new Set();
+        while (set.size < qtd) {
+            set.add(Math.floor(Math.random() * 60) + 1);
         }
-        return [...nums].sort((a, b) => a - b);
+        return Array.from(set).sort((a, b) => a - b);
     }
 
     function passaFiltros(nums, min, max, pares, tol) {
@@ -60,25 +60,26 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
-    function combinacoes(arr, k) {
+    function gerarCombinacoes(arr, k) {
         if (k === 0) return [[]];
         if (arr.length < k) return [];
 
-        const [head, ...tail] = arr;
+        const [primeiro, ...resto] = arr;
+
         return [
-            ...combinacoes(tail, k - 1).map(c => [head, ...c]),
-            ...combinacoes(tail, k)
+            ...gerarCombinacoes(resto, k - 1).map(c => [primeiro, ...c]),
+            ...gerarCombinacoes(resto, k)
         ];
     }
 
     function copiar() {
         if (!resultado.textContent.trim()) {
-            alert("Não há jogos para copiar.");
+            alert("Nenhum jogo para copiar.");
             return;
         }
 
         navigator.clipboard.writeText(resultado.textContent)
             .then(() => alert("Jogos copiados!"))
-            .catch(() => alert("Falha ao copiar."));
+            .catch(() => alert("Erro ao copiar."));
     }
 });
