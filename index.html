@@ -16,7 +16,7 @@
 
 <div class="card">
     <label>Quantidade de jogos</label>
-    <input type="number" id="qtdJogos" value="1" min="1">
+    <input type="number" id="qtdJogos" value="10" min="1">
 
     <label>Números por jogo (6–20)</label>
     <input type="number" id="qtdNumeros" value="6" min="6" max="20">
@@ -33,14 +33,13 @@
     <label>Tolerância</label>
     <input type="number" id="tolerancia" value="1">
 
-    <label class="check">
+    <label>
         <input type="checkbox" id="desdobramento">
         Mostrar desdobramento lógico
     </label>
 
     <button id="btnGerar">Gerar jogos</button>
-	<button id="btnCopiar">Copiar</button>
-
+    <button id="btnCopiar">Copiar</button>
 </div>
 
 <pre id="resultado"></pre>
