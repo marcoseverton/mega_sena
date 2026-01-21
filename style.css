@@ -75,11 +75,6 @@ header {
     border: 1px solid var(--border);
 }
 
-/* CHECKBOX */
-.check {
-    align-items: center;
-}
-
 /* BOTÕES */
 button {
     width: 100%;
@@ -93,7 +88,7 @@ button {
     cursor: pointer;
 }
 
-/* RESULTADO (OCULTO ATÉ GERAR) */
+/* RESULTADO — AUTOAJUSTÁVEL */
 #resultado {
     display: none;
 
@@ -110,16 +105,14 @@ button {
     font-family: monospace;
     line-height: 1.5;
 
-    /* 👇 AQUI ESTÁ A CHAVE */
-    max-height: 50vh;        /* no máximo metade da tela */
-    overflow-y: auto;        /* scroll vertical automático */
-    overflow-x: auto;        /* scroll horizontal se precisar */
+    max-height: 50vh;      /* nunca ocupa a tela toda */
+    overflow-y: auto;      /* scroll vertical */
+    overflow-x: auto;      /* scroll horizontal */
 
-    white-space: pre;        /* preserva alinhamento */
+    white-space: pre;      /* preserva alinhamento */
 }
 
-
-/* INFO */
+/* ÍCONE INFO */
 .info {
     flex: 0 0 auto;
     width: 16px;
@@ -163,4 +156,3 @@ button {
         padding: 12px;
     }
 }
-
