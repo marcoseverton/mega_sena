@@ -1,15 +1,11 @@
-/* =====================================================
-   RESET BÁSICO (consistência entre browsers)
-===================================================== */
+/* RESET */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* =====================================================
-   VARIÁVEIS DE TEMA
-===================================================== */
+/* TEMA */
 :root {
     --bg: #ffffff;
     --text: #000000;
@@ -17,7 +13,8 @@
     --btn: #1b5e20;
     --btn-text: #ffffff;
     --border: #cccccc;
-    --tooltip-bg: #333333;
+    --tooltip-bg: #e3f2fd;
+    --tooltip-text: #0d47a1;
 }
 
 body.dark {
@@ -28,48 +25,30 @@ body.dark {
     --border: #444444;
 }
 
-/* =====================================================
-   BASE
-===================================================== */
-html, body {
-    margin: 0;
-    padding: 0;
-}
-
+/* BASE */
 body {
+    margin: 0;
+    padding: 20px;
     background: var(--bg);
     color: var(--text);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                 "Segoe UI", Roboto, Ubuntu, Arial, sans-serif;
-    padding: 20px;
+    font-family: system-ui, Arial, sans-serif;
 }
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* HEADER */
 header {
     max-width: 420px;
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 header h1 {
-    font-size: 22px;
     margin: 0;
+    font-size: 22px;
 }
 
-#btnTema {
-    font-size: 20px;
-    padding: 6px 10px;
-    border-radius: 6px;
-    width: auto;
-}
-
-/* =====================================================
-   CARD / FORM
-===================================================== */
+/* CARD */
 .card {
     max-width: 420px;
     margin: 20px auto;
@@ -78,11 +57,9 @@ header h1 {
     border-radius: 8px;
 }
 
-/* =====================================================
-   LABELS (blindados contra Chrome)
-===================================================== */
+/* LABELS */
 .card label {
-    display: flex;                 /* NÃO inline */
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
@@ -91,14 +68,11 @@ header h1 {
     margin-top: 14px;
 }
 
-/* Texto do label */
-.card label > span:first-child {
+.label-text {
     flex: 1;
 }
 
-/* =====================================================
-   INPUTS
-===================================================== */
+/* INPUTS */
 .card input[type="number"] {
     width: 100%;
     margin-top: 6px;
@@ -106,30 +80,15 @@ header h1 {
     font-size: 16px;
     border-radius: 4px;
     border: 1px solid var(--border);
-    background: #fff;
 }
 
-/* =====================================================
-   CHECKBOX
-===================================================== */
+/* CHECKBOX */
 .check {
-    display: flex;
-    align-items: center;
     gap: 8px;
-    margin-top: 14px;
-    font-weight: 600;
 }
 
-.check input {
-    flex-shrink: 0;
-    transform: scale(1.1);
-}
-
-/* =====================================================
-   BOTÕES
-===================================================== */
+/* BOTÕES */
 button {
-    display: block;
     width: 100%;
     padding: 12px;
     margin-top: 14px;
@@ -141,13 +100,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.9;
-}
-
-/* =====================================================
-   RESULTADO
-===================================================== */
+/* RESULTADO */
 pre {
     max-width: 420px;
     margin: 20px auto;
@@ -155,20 +108,17 @@ pre {
     color: #0f0;
     padding: 12px;
     border-radius: 6px;
-    overflow-x: auto;
-    font-size: 22px;
+    font-size: 25px;
     font-family: monospace;
 }
 
-/* =====================================================
-   TOOLTIP (À PROVA DE CHROME)
-===================================================== */
+/* INFO (ÍCONE DE AJUDA) */
 .info {
-    flex-shrink: 0;               /* CRÍTICO */
+    flex: 0 0 auto;             /* 🔥 impede esticar */
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #555;
+    background: #4cafef;
     color: #fff;
     font-size: 12px;
     line-height: 16px;
@@ -182,27 +132,27 @@ pre {
     font-weight: bold;
 }
 
-/* Tooltip flutuante (fora do fluxo) */
+/* TOOLTIP */
 .info:hover::before,
 .info:active::before {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 140%;
-    left: 0;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--tooltip-bg);
-    color: #fff;
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 13px;
-    width: 260px;
+    color: var(--tooltip-text);
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    max-width: 220px;
     white-space: normal;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     z-index: 9999;
-    pointer-events: none;         /* NÃO interfere no layout */
+    pointer-events: none;
 }
 
-/* =====================================================
-   RESPONSIVO
-===================================================== */
+/* RESPONSIVO */
 @media (max-width: 480px) {
     body {
         padding: 12px;
@@ -213,10 +163,4 @@ pre {
     pre {
         max-width: 100%;
     }
-
-    .info:hover::before,
-    .info:active::before {
-        width: 220px;
-    }
 }
-
