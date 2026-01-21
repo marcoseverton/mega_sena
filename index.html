@@ -18,62 +18,74 @@
 </header>
 
 <div class="card">
-    <label class="help">
-      Soma mínima
-      <span>Valor mínimo permitido para a soma das dezenas do jogo</span>
+
+    <!-- Quantidade de jogos -->
+    <label>
+        Quantidade de jogos
+        <span class="info" data-tooltip="Quantidade de apostas que serão geradas pelo sistema."></span>
     </label>
     <input type="number" id="qtdJogos" value="10" min="1">
 
-    <label class="help">
-      Soma mínima
-      <span>Valor mínimo permitido para a soma das dezenas do jogo</span>
+    <!-- Quantidade de números -->
+    <label>
+        Números por jogo (6–20)
+        <span class="info" data-tooltip="Quantidade de dezenas em cada jogo. A aposta simples da Mega-Sena possui 6 números."></span>
     </label>
     <input type="number" id="qtdNumeros" value="6" min="6" max="20">
 
-    <label class="help">
-      Soma mínima
-      <span>Valor mínimo permitido para a soma das dezenas do jogo</span>
+    <!-- Soma mínima -->
+    <label>
+        Soma mínima
+        <span class="info" data-tooltip="Valor mínimo permitido para a soma de todas as dezenas do jogo. Jogos muito baixos são raros nos sorteios."></span>
     </label>
-
     <input type="number" id="sumMin" value="120">
 
-    <label class="help">
-      Soma mínima
-      <span>Valor mínimo permitido para a soma das dezenas do jogo</span>
+    <!-- Soma máxima -->
+    <label>
+        Soma máxima
+        <span class="info" data-tooltip="Valor máximo permitido para a soma de todas as dezenas do jogo. Jogos muito altos também são estatisticamente raros."></span>
     </label>
     <input type="number" id="sumMax" value="210">
 
-    <label class="help">
-      Soma mínima
-      <span>Valor mínimo permitido para a soma das dezenas do jogo</span>
+    <!-- Pares alvo -->
+    <label>
+        Pares alvo
+        <span class="info" data-tooltip="Quantidade ideal de números pares no jogo. Exemplo: 3 pares e 3 ímpares."></span>
     </label>
     <input type="number" id="pares" value="3">
 
-    <label class="help">
-      Soma mínima
-      <span>Valor mínimo permitido para a soma das dezenas do jogo</span>
+    <!-- Tolerância -->
+    <label>
+        Tolerância
+        <span class="info" data-tooltip="Margem de variação permitida para a quantidade de pares. Exemplo: alvo 3 com tolerância 1 aceita jogos com 2 a 4 pares."></span>
     </label>
     <input type="number" id="tolerancia" value="1">
 
-    <label class="help">
-      Soma mínima
-      <span>Valor mínimo permitido para a soma das dezenas do jogo</span>
+    <!-- Desdobramento -->
+    <label class="check">
+        <input type="checkbox" id="desdobramento">
+        Mostrar desdobramento lógico
+        <span class="info" data-tooltip="Quando selecionado, exibe todas as combinações possíveis de 6 números a partir do jogo gerado com mais dezenas."></span>
     </label>
 
+    <!-- Botões -->
     <button id="btnGerar">Gerar jogos</button>
     <button id="btnCopiar">Copiar</button>
+
 </div>
 
 <pre id="resultado"></pre>
-<!--
+
 <script src="app.js"></script>
+
+<!-- SERVICE WORKER DESATIVADO POR ENQUANTO -->
+<!--
 <script>
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("service-worker.js");
 }
 </script>
 -->
+
 </body>
 </html>
-
-
