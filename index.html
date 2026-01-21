@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador Mega-Sena</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1b5e20">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🎯 Gerador Mega-Sena</h1>
+
+<div class="card">
+    <label>Quantidade de jogos</label>
+    <input type="number" id="qtdJogos" value="1" min="1">
+
+    <label>Números por jogo (6–20)</label>
+    <input type="number" id="qtdNumeros" value="6" min="6" max="20">
+
+    <label>Soma mínima</label>
+    <input type="number" id="sumMin" value="120">
+
+    <label>Soma máxima</label>
+    <input type="number" id="sumMax" value="210">
+
+    <label>Pares alvo</label>
+    <input type="number" id="pares" value="3">
+
+    <label>Tolerância</label>
+    <input type="number" id="tolerancia" value="1">
+
+    <label class="check">
+        <input type="checkbox" id="desdobramento">
+        Mostrar desdobramento lógico
+    </label>
+
+    <button onclick="gerar()">Gerar jogos</button>
+    <button onclick="copiar()">Copiar</button>
+</div>
+
+<pre id="resultado"></pre>
+
+<script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+</body>
+</html>
