@@ -1,15 +1,43 @@
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --card: #f2f2f2;
+    --btn: #1b5e20;
+    --btn-text: #ffffff;
+}
+
+body.dark {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --card: #1e1e1e;
+    --btn: #2e7d32;
+}
+
 body {
+    background: var(--bg);
+    color: var(--text);
     font-family: system-ui, Arial, sans-serif;
     margin: 20px;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 420px;
+    margin: auto;
+}
+
 h1 {
-    text-align: center;
+    margin: 0;
 }
 
 .card {
     max-width: 420px;
-    margin: auto;
+    margin: 20px auto;
+    padding: 15px;
+    background: var(--card);
+    border-radius: 8px;
     display: grid;
     gap: 10px;
 }
@@ -20,14 +48,20 @@ input, button {
 }
 
 button {
-    background: #1b5e20;
-    color: white;
+    background: var(--btn);
+    color: var(--btn-text);
     border: none;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 button:hover {
     opacity: 0.9;
+}
+
+#btnTema {
+    font-size: 20px;
+    padding: 6px 10px;
 }
 
 .check {
@@ -37,9 +71,11 @@ button:hover {
 }
 
 pre {
-    margin-top: 20px;
-    background: #111;
+    max-width: 420px;
+    margin: 20px auto;
+    background: #000;
     color: #0f0;
     padding: 10px;
+    border-radius: 6px;
     overflow-x: auto;
 }
