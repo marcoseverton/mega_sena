@@ -1,81 +1,22 @@
-:root {
-    --bg: #ffffff;
-    --text: #000000;
-    --card: #f2f2f2;
-    --btn: #1b5e20;
-    --btn-text: #ffffff;
+.help {
+    position: relative;
+    cursor: help;
 }
 
-body.dark {
-    --bg: #121212;
-    --text: #e0e0e0;
-    --card: #1e1e1e;
-    --btn: #2e7d32;
-}
-
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: system-ui, Arial, sans-serif;
-    margin: 20px;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 420px;
-    margin: auto;
-}
-
-h1 {
-    margin: 0;
-}
-
-.card {
-    max-width: 420px;
-    margin: 20px auto;
-    padding: 15px;
-    background: var(--card);
-    border-radius: 8px;
-    display: grid;
-    gap: 10px;
-}
-
-input, button {
-    padding: 10px;
-    font-size: 16px;
-}
-
-button {
-    background: var(--btn);
-    color: var(--btn-text);
-    border: none;
-    cursor: pointer;
+.help span {
+    visibility: hidden;
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 6px;
     border-radius: 4px;
+    font-size: 13px;
+    width: 220px;
+    top: 120%;
+    left: 0;
+    z-index: 10;
 }
 
-button:hover {
-    opacity: 0.9;
-}
-
-#btnTema {
-    font-size: 20px;
-    padding: 6px 10px;
-}
-
-.check {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-pre {
-    max-width: 420px;
-    margin: 20px auto;
-    background: #000;
-    color: #0f0;
-    padding: 10px;
-    border-radius: 6px;
-    overflow-x: auto;
+.help:hover span {
+    visibility: visible;
 }
