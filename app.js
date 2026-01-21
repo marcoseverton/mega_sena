@@ -1,45 +1,84 @@
-body {
-    font-family: system-ui, Arial, sans-serif;
-    margin: 20px;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-h1 {
-    text-align: center;
-}
+    const btnGerar = document.getElementById("btnGerar");
+    const btnCopiar = document.getElementById("btnCopiar");
+    const resultado = document.getElementById("resultado");
 
-.card {
-    max-width: 420px;
-    margin: auto;
-    display: grid;
-    gap: 10px;
-}
+    btnGerar.addEventListener("click", gerar);
+    btnCopiar.addEventListener("click", copiar);
 
-input, button {
-    padding: 10px;
-    font-size: 16px;
-}
+    function gerar() {
+        const qtdJogos = Number(document.getElementById("qtdJogos").value);
+        const qtdNums  = Number(document.getElementById("qtdNumeros").value);
+        const sumMin   = Number(document.getElementById("sumMin").value);
+        const sumMax   = Number(document.getElementById("sumMax").value);
+        const pares    = Number(document.getElementById("pares").value);
+        const tol      = Number(document.getElementById("tolerancia").value);
+        const desd     = document.getElementById("desdobramento").checked;
 
-button {
-    background: #1b5e20;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+        let output = "";
 
-button:hover {
-    opacity: 0.9;
-}
+        for (let j = 1; j <= qtdJogos; j++) {
+            let numeros;
+            do {
+                numeros = gerarNumeros(qtdNums);
+            } while (!passaFiltros(numeros, sumMin, sumMax, pares, tol));
 
-.check {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+            output += `JOGO ${j}\n`;
+            output += numeros.map(n => n.toString().padStart(2, "0")).join(" ") + "\n";
 
-pre {
-    margin-top: 20px;
-    background: #111;
-    color: #0f0;
-    padding: 10px;
-    overflow-x: auto;
-}
+            if (desd && qtdNums > 6) {
+                output += "Desdobramento:\n";
+                combinacoes(numeros, 6).forEach((c, i) => {
+                    output += `  ${i + 1}: ${c.map(n => n.toString().padStart(2, "0")).join(" ")}\n`;
+                });
+            }
+
+            output += "\n";
+        }
+
+        resultado.textContent = output;
+    }
+
+    function gerarNumeros(qtd) {
+        const nums = new Set();
+        while (nums.size < qtd) {
+            nums.add(Math.floor(Math.random() * 60) + 1);
+        }
+        return [...nums].sort((a, b) => a - b);
+    }
+
+    function passaFiltros(nums, min, max, pares, tol) {
+        const soma = nums.reduce((a, b) => a + b, 0);
+        const qtdPares = nums.filter(n => n % 2 === 0).length;
+
+        return (
+            soma >= min &&
+            soma <= max &&
+            qtdPares >= pares - tol &&
+            qtdPares <= pares + tol
+        );
+    }
+
+    function combinacoes(arr, k) {
+        if (k === 0) return [[]];
+        if (arr.length < k) return [];
+
+        const [head, ...tail] = arr;
+        return [
+            ...combinacoes(tail, k - 1).map(c => [head, ...c]),
+            ...combinacoes(tail, k)
+        ];
+    }
+
+    function copiar() {
+        if (!resultado.textContent.trim()) {
+            alert("Não há jogos para copiar.");
+            return;
+        }
+
+        navigator.clipboard.writeText(resultado.textContent)
+            .then(() => alert("Jogos copiados!"))
+            .catch(() => alert("Falha ao copiar."));
+    }
+});
