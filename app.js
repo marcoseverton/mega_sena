@@ -1,35 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const body = document.body;
+    const btnGerar = document.getElementById("btnGerar");
+    const btnCopiar = document.getElementById("btnCopiar");
     const btnTema = document.getElementById("btnTema");
     const resultado = document.getElementById("resultado");
+    const body = document.body;
 
     // ===== TEMA =====
-    const temaSalvo = localStorage.getItem("tema");
-    if (temaSalvo === "dark") {
+    const tema = localStorage.getItem("tema");
+    if (tema === "dark") {
         body.classList.add("dark");
         btnTema.textContent = "☀️";
     }
 
     btnTema.addEventListener("click", () => {
         body.classList.toggle("dark");
-        const dark = body.classList.contains("dark");
-        localStorage.setItem("tema", dark ? "dark" : "light");
-        btnTema.textContent = dark ? "☀️" : "🌙";
+        const escuro = body.classList.contains("dark");
+        localStorage.setItem("tema", escuro ? "dark" : "light");
+        btnTema.textContent = escuro ? "☀️" : "🌙";
     });
 
     // ===== BOTÕES =====
-    document.getElementById("btnGerar").addEventListener("click", gerar);
-    document.getElementById("btnCopiar").addEventListener("click", copiar);
+    btnGerar.addEventListener("click", gerar);
+    btnCopiar.addEventListener("click", copiar);
 
     function gerar() {
-        const qtdJogos = +qtdJogos.value;
-        const qtdNums  = +qtdNumeros.value;
-        const sumMin   = +sumMin.value;
-        const sumMax   = +sumMax.value;
-        const pares    = +pares.value;
-        const tol      = +tolerancia.value;
-        const desd     = desdobramento.checked;
+        const qtdJogos = Number(document.getElementById("qtdJogos").value);
+        const qtdNums  = Number(document.getElementById("qtdNumeros").value);
+        const sumMin   = Number(document.getElementById("sumMin").value);
+        const sumMax   = Number(document.getElementById("sumMax").value);
+        const pares    = Number(document.getElementById("pares").value);
+        const tol      = Number(document.getElementById("tolerancia").value);
+        const desd     = document.getElementById("desdobramento").checked;
 
         let texto = "";
 
@@ -40,12 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
             } while (!passaFiltros(nums, sumMin, sumMax, pares, tol));
 
             texto += `JOGO ${j}\n`;
-            texto += nums.map(n => n.toString().padStart(2,"0")).join(" ") + "\n";
+            texto += nums.map(n => n.toString().padStart(2, "0")).join(" ") + "\n";
 
             if (desd && qtdNums > 6) {
                 texto += "Desdobramento:\n";
                 gerarCombinacoes(nums, 6).forEach((c, i) => {
-                    texto += `  ${i+1}: ${c.map(n => n.toString().padStart(2,"0")).join(" ")}\n`;
+                    texto += `  ${i + 1}: ${c.map(n => n.toString().padStart(2,"0")).join(" ")}\n`;
                 });
             }
 
@@ -60,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         while (set.size < qtd) {
             set.add(Math.floor(Math.random() * 60) + 1);
         }
-        return [...set].sort((a,b) => a-b);
+        return [...set].sort((a, b) => a - b);
     }
 
     function passaFiltros(nums, min, max, pares, tol) {
