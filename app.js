@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultado = document.getElementById("resultado");
     const btnTema = document.getElementById("btnTema");
 
-    // Troca de tema
     btnTema.onclick = () => {
         document.body.classList.toggle("dark");
     };
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return Array.from(nums).sort((a, b) => a - b);
     }
 
-    // Gerar jogos
     btnGerar.onclick = () => {
         const qtdJogos = Number(document.getElementById("qtdJogos").value);
         const qtdNums  = Number(document.getElementById("qtdNumeros").value);
@@ -34,10 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         resultado.textContent = texto.trim();
-        resultado.style.display = "block"; // agora aparece
+        resultado.style.display = "block";
     };
 
-    // Copiar jogos
     btnCopiar.onclick = () => {
         if (!resultado.textContent) return;
         navigator.clipboard.writeText(resultado.textContent);
