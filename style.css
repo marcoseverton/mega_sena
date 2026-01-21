@@ -156,7 +156,7 @@ pre {
     padding: 12px;
     border-radius: 6px;
     overflow-x: auto;
-    font-size: 16px;
+    font-size: 22px;
     font-family: monospace;
 }
 
@@ -219,3 +219,4 @@ pre {
         width: 220px;
     }
 }
+
