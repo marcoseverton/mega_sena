@@ -1,27 +1,139 @@
-.help {
-    position: relative;
-    cursor: help;
+/* ==============================
+   VARIÁVEIS DE TEMA
+================================ */
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --card: #f2f2f2;
+    --btn: #1b5e20;
+    --btn-text: #ffffff;
+    --border: #cccccc;
 }
 
-.help span {
-    visibility: hidden;
-    position: absolute;
-    background: #333;
-    color: #fff;
-    padding: 6px;
+body.dark {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --card: #1e1e1e;
+    --btn: #2e7d32;
+    --border: #444444;
+}
+
+/* ==============================
+   BASE
+================================ */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* ==============================
+   HEADER
+================================ */
+header {
+    max-width: 420px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+#btnTema {
+    font-size: 20px;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+/* ==============================
+   CARD / FORM
+================================ */
+.card {
+    max-width: 420px;
+    margin: 20px auto;
+    padding: 16px;
+    background: var(--card);
+    border-radius: 8px;
+    display: block;
+}
+
+/* LABELS */
+.card label {
+    display: block;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+/* INPUTS */
+.card input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 4px;
     border-radius: 4px;
-    font-size: 13px;
-    width: 220px;
-    top: 120%;
-    left: 0;
-    z-index: 10;
+    border: 1px solid var(--border);
+    box-sizing: border-box;
 }
 
-.help:hover span {
-    visibility: visible;
+/* CHECKBOX */
+.check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-weight: 600;
 }
+
+.check input {
+    transform: scale(1.1);
+}
+
+/* ==============================
+   BOTÕES
+================================ */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 14px;
+    font-size: 16px;
+    background: var(--btn);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* ==============================
+   RESULTADO
+================================ */
+pre {
+    max-width: 420px;
+    margin: 20px auto;
+    background: #000;
+    color: #0f0;
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 14px;
+}
+
+/* ==============================
+   TOOLTIP (INFO)
+================================ */
 .info {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 6px;
     width: 16px;
     height: 16px;
@@ -29,30 +141,49 @@
     background: #555;
     color: #fff;
     font-size: 12px;
-    text-align: center;
-    line-height: 16px;
-    cursor: help;
+    cursor: pointer;
     position: relative;
+    flex-shrink: 0;
 }
 
 .info::after {
     content: "ⓘ";
+    font-weight: bold;
 }
 
+/* Tooltip */
 .info:hover::before,
 .info:active::before {
     content: attr(data-tooltip);
     position: absolute;
     bottom: 140%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     background: #333;
     color: #fff;
-    padding: 6px 8px;
+    padding: 8px;
     border-radius: 4px;
     font-size: 13px;
+    width: 260px;
     white-space: normal;
-    width: 240px;
-    z-index: 100;
+    z-index: 999;
 }
 
+/* ==============================
+   RESPONSIVO
+================================ */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    header,
+    .card,
+    pre {
+        max-width: 100%;
+    }
+
+    .info:hover::before,
+    .info:active::before {
+        width: 220px;
+    }
+}
